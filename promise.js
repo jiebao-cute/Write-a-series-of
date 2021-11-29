@@ -10,59 +10,95 @@ class MyPromise {
         executor(this.resolve, this.reject)
     }
 
-    onFulfilledCallback = null
-    onRejectedCallback = null
-    // 储存状态的变量，初始值是 pending
+    PromiseResult = null
+    onFulfilledCallback = []
+    onRejectedCallback = []
     status = PENDING
-    // 成功之后的值
-    value = null;
-    // 失败之后的原因
-    reason = null;
-
-    // resolve和reject为什么要用箭头函数？
-    // 如果直接调用的话，普通函数this指向的是window或者undefined
-    // 用箭头函数就可以让this指向当前实例对象
-    // 更改成功后的状态
     resolve = (value) => {
         if (this.status === PENDING) {
             this.status = FULFILLED
-            this.value = value
-            this.onFulfilledCallback && this.onFulfilledCallback(value)
+            this.PromiseResult = value
+            while (this.onFulfilledCallback.length) {
+                this.onFulfilledCallback.shift()(this.PromiseResult)
+            }
         }
     }
     // 更改失败后的状态
     reject = (reason) => {
         if (this.status === PENDING) {
             this.status = REJECTED
-            this.reason = reason
-            this.onRejectedCallback && this.onRejectedCallback(reason)
+            this.PromiseResult = reason
+            while (this.onRejectedCallback.length) {
+                this.onRejectedCallback.shift()(this.PromiseResult)
+            }
         }
     }
 
     then(onFulfilled, onRejected) {
-        if (this.status === FULFILLED) {
-            onFulfilled(this.value)
-        } else if (this.status === REJECTED) {
-            onRejected(this.reason)
-        } else if (this.status === PENDING) {
-            // 因为不知道后面状态的变化情况，所以将成功回调和失败回调存储起来
-            // 等到执行成功失败函数的时候再传递
-            this.onFulfilledCallback = onFulfilled
-            this.onRejectedCallback = onRejected
-        }
+        var promise2 = new MyPromise((resolve, reject) => {
+            // 参数校验，确保一定是函数
+            onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : val => val
+            onRejected = typeof onRejected === 'function' ? onRejected : reason => {
+                throw reason
+            }
+            const resolvePromise = (cb) => {
+                try {
+
+                    const x = cb(this.PromiseResult)
+                    console.log(x)
+                    if (x === promise2) {
+                        // 不能返回自身哦
+                        throw new Error('不能返回自身')
+                    }
+                    // 判断x是不是 MyPromise 实例对象
+                    if (x instanceof MyPromise) {
+
+                        // 执行 x，调用 then 方法，目的是将其状态变为 fulfilled 或者 rejected
+                        // x.then(value => resolve(value), reason => reject(reason))
+                        x.then(resolve, reject)
+                    } else {
+
+                        // 普通值
+                        resolve(x)
+                    }
+                } catch (reason) {
+                    reject(reason)
+                }
+            }
+            if (this.status === FULFILLED) {
+                resolvePromise(onFulfilled)
+            } else if (this.status === REJECTED) {
+                resolvePromise(onRejected)
+            } else if (this.status === PENDING) {
+                // 因为不知道后面状态的变化情况，所以将成功回调和失败回调存储起来
+                // 等到执行成功失败函数的时候再传递
+                this.onFulfilledCallback.push(resolvePromise.bind(this, onFulfilled))
+                this.onRejectedCallback.push(resolvePromise.bind(this, onRejected))
+            }
+        })
+        return promise2
     }
 }
 
 
 const promise = new MyPromise((resolve, reject) => {
-    setTimeout(()=>{
-        reject('err')
-    },0)
+    //setTimeout(()=>{
+    resolve('success')
+    //})
 
 })
 
+function other() {
+    return new MyPromise((resolve, reject) => {
+        resolve('other')
+    })
+}
+
 promise.then(value => {
+    console.log(1)
     console.log('resolve', value)
-}, reason => {
-    console.log('reject', reason)
+    return other()
+}).then(value => {
+    console.log(2)
+    console.log('resolve', value)
 })
