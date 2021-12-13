@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="daa672be-718e-4bb3-9f30-da739341adc2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pipeikuohao.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curring.js" beforeDir="false" afterPath="$PROJECT_DIR$/curring.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debounce.js" beforeDir="false" afterPath="$PROJECT_DIR$/debounce.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/throttle.js" beforeDir="false" afterPath="$PROJECT_DIR$/throttle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/promise.js" beforeDir="false" afterPath="$PROJECT_DIR$/promise.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,17 +59,37 @@
       <updated>1637480357614</updated>
       <workItem from="1637480358733" duration="21941000" />
       <workItem from="1637817170478" duration="28391000" />
+      <workItem from="1639035739547" duration="3163000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="407" y="135" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1637749366334">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="407" y="135" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1637749366334" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1639412449696">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639412449696" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1639413589852">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1639413589852" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1638268608638">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

@@ -43,7 +43,6 @@ class MyPromise {
             }
             const resolvePromise = (cb) => {
                 try {
-
                     const x = cb(this.PromiseResult)
                     console.log(x)
                     if (x === promise2) {
