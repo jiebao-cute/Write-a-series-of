@@ -22,13 +22,12 @@ function MyPromise(executor){
             this.onRejectedCallback.forEach(fn=> fn(this.reason))
         }
     }
+    //try是为了在执行promise的时候捕获错误，手动返回reject
     try{
         executor(resolve,reject)
     }catch (e){
         reject(e)
     }
-
-
 }
 MyPromise.prototype.then = function (successfunction,Failurefunction){
     let promise2 = new MyPromise((resolve,reject)=>{
@@ -38,8 +37,14 @@ MyPromise.prototype.then = function (successfunction,Failurefunction){
                 //普通值直接调用resolve
                 //如果是promise就去查看promise的返回结果，决定是调用resolve，h还是reject
                 //为了防止then里面返回的是自己这个promise造成循环调用，进行判断
-                let x = successfunction(this.value)
-                resolvePromise(promise2,x,resolve,reject)
+                //try catch是为了捕获在then里面执行的函数报错的时候可以手动reject传给下一次的then函数
+                try{
+                    let x = successfunction(this.value)
+                    resolvePromise(promise2,x,resolve,reject)
+                }catch (e){
+                    reject(e)
+                }
+
             },0)
         }else if (this.status === 'REJECTED'){
           Failurefunction(this.reason)
