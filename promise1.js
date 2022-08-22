@@ -34,10 +34,13 @@ MyPromise.prototype.then = function (successfunction,Failurefunction){
     let promise2 = new MyPromise((resolve,reject)=>{
         if (this.status === 'FULFILLED'){
             setTimeout(()=>{
-               // console.log(this.value)
+               // 判断then的返回值是什么，也就是x
+                //普通值直接调用resolve
+                //如果是promise就去查看promise的返回结果，决定是调用resolve，h还是reject
+                //为了防止then里面返回的是自己这个promise造成循环调用，进行判断
                 let x = successfunction(this.value)
-                resolvePromise(x,resolve,reject)
-            })
+                resolvePromise(promise2,x,resolve,reject)
+            },0)
         }else if (this.status === 'REJECTED'){
           Failurefunction(this.reason)
         }else {
@@ -48,7 +51,12 @@ MyPromise.prototype.then = function (successfunction,Failurefunction){
    return promise2
 }
 //判断then 的返回值是promis还是正常值
-let resolvePromise = function(x,resolve,reject){
+let resolvePromise = function(promise2,x,resolve,reject){
+    if (promise2 === x){
+
+        return reject(new TypeError('循环调用，返回的是自己的promise'))
+    }
+    //如果返回的是promise就去调用返回的promis.then去判断状态，将值传进去
     if (x instanceof MyPromise){
         x.then((value)=>{resolve(value)},(reason)=>{reject(reason)})
    }else {
@@ -68,14 +76,16 @@ function test1(){
         resolve('other')
     })
 }
-p.then((res)=>{
-    console.log(res)
-        return test1()
+let p1 = p.then((res)=>{
+       console.log(res)
+        return p1
     },
     (reason)=>{
         console.log(reason)
-    }).then((res)=>{
+    })
+p1.then((res)=>{
         console.log(res)
+
     },
     (reason)=>{
         console.log(reason)
