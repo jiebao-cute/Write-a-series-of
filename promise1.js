@@ -3,7 +3,7 @@ const FULFILLED = 'fulfilled';
 const REJECTED = 'rejected';
 
 function MyPromise(executor){
-   // console.log('执行promise')
+   console.log('执行promise')
     this.status = 'PENDING'
     this.value = ''
     this.reason = ''
@@ -31,8 +31,10 @@ function MyPromise(executor){
     }
 }
 MyPromise.prototype.then = function (successfunction,Failurefunction){
-    let promise2 = new MyPromise((resolve,reject)=>{
-         //console.log('执行then')
+    successfunction = successfunction ? successfunction : value=>value
+    Failurefunction = Failurefunction ? Failurefunction : reason => {throw reason}
+     let promise2 = new MyPromise((resolve,reject)=>{
+         console.log('执行then')
         if (this.status === 'FULFILLED'){
             setTimeout(()=>{
                // 判断then的返回值是什么，也就是x
@@ -119,23 +121,23 @@ let resolvePromise = function(promise2,x,resolve,reject){
 //测试例子
 
 const p = new MyPromise((resolve,reject)=>{
-    setTimeout(()=>{
+   // setTimeout(()=>{
         resolve('成功1......')
-    },2000)
+   // },2000)
 
 })
 //测试返回的是个promise
 function test1(){
-    //console.log('test')
+    console.log('test')
     return new MyPromise((resolve,reject)=>{
-        //console.log('testpromis')
+        console.log('testpromis')
         resolve('other')
     })
 }
 p1 = p.then((res)=>{
-    //console.log('p1的then')
+    console.log('p1的then')
         console.log(res)
-        return test1()
+        return p1
     },
     (reason)=>{
         console.log(reason)

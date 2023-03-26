@@ -20,9 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daa672be-718e-4bb3-9f30-da739341adc2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pipeikuohao.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/promise.js" beforeDir="false" afterPath="$PROJECT_DIR$/promise.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eventbus.html" beforeDir="false" afterPath="$PROJECT_DIR$/eventbus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eventbus.js" beforeDir="false" afterPath="$PROJECT_DIR$/eventbus.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/promise1.js" beforeDir="false" afterPath="$PROJECT_DIR$/promise1.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,14 +41,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../成型项目源码/vite-management" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jiebao\jirengu\手写系列\series-of-write" />
       <recent name="C:\Users\jiebao\jirengu\前端资料\手写系列\series-of-write" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="promise1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/promise1.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.promise1.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -59,8 +71,57 @@
       <updated>1637480357614</updated>
       <workItem from="1637480358733" duration="21941000" />
       <workItem from="1637817170478" duration="28391000" />
-      <workItem from="1639035739547" duration="3163000" />
+      <workItem from="1639035739547" duration="6476000" />
+      <workItem from="1640062467061" duration="652000" />
+      <workItem from="1640069324723" duration="994000" />
+      <workItem from="1641872641456" duration="8086000" />
+      <workItem from="1642565245572" duration="79000" />
+      <workItem from="1650294531585" duration="1161000" />
+      <workItem from="1650621156713" duration="15362000" />
+      <workItem from="1650956469499" duration="32000" />
+      <workItem from="1657167558649" duration="3273000" />
+      <workItem from="1657172652386" duration="564000" />
+      <workItem from="1659328804459" duration="3669000" />
+      <workItem from="1660706825631" duration="60000" />
+      <workItem from="1660982657495" duration="23303000" />
+      <workItem from="1661223871107" duration="15806000" />
     </task>
+    <task id="LOCAL-00001" summary="vue响应式原理">
+      <created>1641982467918</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1641982467918</updated>
+    </task>
+    <task id="LOCAL-00002" summary="初步完成promis">
+      <created>1661152479030</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1661152479030</updated>
+    </task>
+    <task id="LOCAL-00003" summary="链式调用里面去判断返回的是不是自己">
+      <created>1661153479009</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1661153479009</updated>
+    </task>
+    <task id="LOCAL-00004" summary="添加捕获错误，手动返回reject">
+      <created>1661183008877</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1661183008877</updated>
+    </task>
+    <task id="LOCAL-00005" summary="then 其他状态的函数补充">
+      <created>1661238858276</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1661238858276</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -76,23 +137,36 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="vue响应式原理" />
+    <MESSAGE value="初步完成promis" />
+    <MESSAGE value="链式调用里面去判断返回的是不是自己" />
+    <MESSAGE value="添加捕获错误，手动返回reject" />
+    <MESSAGE value="then 其他状态的函数补充" />
+    <option name="LAST_COMMIT_MESSAGE" value="then 其他状态的函数补充" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="407" y="135" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1637749366334">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1661329111435">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="407" y="135" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1637749366334" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1639412449696">
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1661329111435" />
+    <state width="295" height="470" key="GridCell.Tab.0.bottom" timestamp="1661491087841">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639412449696" />
-    <state x="297" y="151" key="run.anything.popup" timestamp="1639413589852">
+    <state width="295" height="470" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1661491087841" />
+    <state width="295" height="470" key="GridCell.Tab.0.center" timestamp="1661491087841">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1639413589852" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1638268608638">
+    <state width="295" height="470" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1661491087841" />
+    <state width="295" height="470" key="GridCell.Tab.0.left" timestamp="1661491087840">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1638268608638" />
+    <state width="295" height="470" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1661491087840" />
+    <state width="295" height="470" key="GridCell.Tab.0.right" timestamp="1661491087841">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="295" height="470" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1661491087841" />
   </component>
 </project>
